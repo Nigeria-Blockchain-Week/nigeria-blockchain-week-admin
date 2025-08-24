@@ -36,20 +36,20 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">Blog Posts</h2>
-          <div className="space-x-2">
+    <div className="min-h-screen bg-gray-100 p-4 md:p-8">
+      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-4 md:p-8">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 space-y-4 sm:space-y-0">
+          <h2 className="text-xl md:text-2xl font-bold">Blog Posts</h2>
+          <div className="flex space-x-2">
             <button
               onClick={handleLogout}
-              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+              className="bg-red-500 text-white px-3 md:px-4 py-2 rounded hover:bg-red-600 transition text-sm md:text-base"
             >
               Logout
             </button>
             <button
               onClick={() => navigate("/dashboard/new")}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+              className="bg-blue-600 text-white px-3 md:px-4 py-2 rounded hover:bg-blue-700 transition text-sm md:text-base"
             >
               New Post
             </button>
@@ -59,28 +59,28 @@ export default function Dashboard() {
           {posts.map((post) => (
             <li
               key={post.id}
-              className="flex items-center bg-gray-50 rounded p-4 shadow"
+              className="flex flex-col sm:flex-row sm:items-center bg-gray-50 rounded p-4 shadow space-y-4 sm:space-y-0"
             >
               <img
                 src={post.coverUrl}
                 alt="cover"
-                className="w-24 h-24 object-cover rounded mr-4"
+                className="w-full sm:w-24 h-48 sm:h-24 object-cover rounded sm:mr-4"
               />
               <div className="flex-1">
                 <h3 className="text-lg font-semibold">{post.title}</h3>
                 <p className="text-gray-600 text-sm">{post.description}</p>
                 <p className="text-gray-500 text-xs">By {post.author}</p>
               </div>
-              <div className="flex space-x-2">
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                 <button
                   onClick={() => navigate(`/dashboard/edit/${post.id}`)}
-                  className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition"
+                  className="bg-green-500 text-white px-3 py-2 rounded hover:bg-green-600 transition text-sm"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => handleDelete(post.id, post.title)}
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                  className="bg-red-500 text-white px-3 py-2 rounded hover:bg-red-600 transition text-sm"
                 >
                   Delete
                 </button>
